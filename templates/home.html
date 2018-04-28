@@ -4,6 +4,7 @@
 {% block title %}Home{% endblock %}
 {% block content %}
 <p><a href=/>cms users put</a></p>
+Available pages:<br>
 {% for page in Pages_list %}
     <li><a href="/annotated/{{ page.name }}">{{ page.name }}</a></li>
 {% endfor %}
