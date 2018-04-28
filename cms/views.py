@@ -38,7 +38,8 @@ def get_page(request, req_name):
             if request.method == "GET":
                 return HttpResponse(req_page)
             else:
-                return HttpResponseNotFound("<h1>Page already exist.</h1>")
+                return HttpResponseNotAllowed("['GET', 'PUT']",
+                                              "<h1>405 Not Allowed</h1>")
         except Pages.DoesNotExist:
                 return HttpResponseNotFound("<h1>Page does not exist.</h1>")
 
@@ -56,4 +57,4 @@ def ann_get_page(request, req_name):
         except Pages.DoesNotExist:
                 return HttpResponseNotFound("<h1>Page does not exist.</h1>")
     else:
-        return HttpResponseNotFound("<h1>404</h1>")
+        return HttpResponseNotAllowed("['GET']", "<h1>405 Not Allowed</h1>")
