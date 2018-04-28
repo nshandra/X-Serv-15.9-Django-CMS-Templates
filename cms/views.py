@@ -1,6 +1,6 @@
 from django.http import HttpResponse, HttpResponseNotFound
-from django.shortcuts import render, render_to_response
 from django.views.decorators.csrf import csrf_exempt
+from django.shortcuts import render
 from cms.models import Pages
 
 
@@ -46,14 +46,14 @@ def get_page(request, req_name):
 
 def ann_main(request):
     Pages_list = {'Pages_list': Pages.objects.all()}
-    return render_to_response('home.html', Pages_list)
+    return render(request, 'home.html', Pages_list)
 
 
 def ann_get_page(request, req_name):
     if request.method == "GET":
         try:
             content = {'content': Pages.objects.get(name=req_name)}
-            return render_to_response('page.html', content)
+            return render(request, 'page.html', content)
         except Pages.DoesNotExist:
                 return HttpResponseNotFound("<h1>Page does not exist.</h1>")
     else:
