@@ -11,6 +11,7 @@ def login_view(request):
     else:
         return ("<p>Not logged in: <a href=/login>login</a></p>")
 
+
 def main(request):
     resp = login_view(request)
     resp += "<p><a href=/annotated>cms_templates</a></p>"
