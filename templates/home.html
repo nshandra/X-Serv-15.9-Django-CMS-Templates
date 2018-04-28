@@ -1,0 +1,10 @@
+<!-- templates/home.html -->
+{% extends 'base.html' %}
+
+{% block title %}Home{% endblock %}
+{% block content %}
+<p><a href=/>cms users put</a></p>
+{% for page in Pages_list %}
+    <li><a href="/annotated/{{ page.name }}">{{ page.name }}</a></li>
+{% endfor %}
+{% endblock %}
